@@ -45,9 +45,9 @@ class PaymentMethodCard extends StatelessWidget {
     return Container(
         width: size.width,
         height: 88,
-        margin: const EdgeInsets.symmetric(horizontal: 20),
+        margin: const EdgeInsets.symmetric(horizontal: 2),
         padding: const EdgeInsets.only(
-            left: 20, top: 10, bottom: 10, right: 30),
+            left: 20, top: 10, bottom: 10, right: 20),
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(20),

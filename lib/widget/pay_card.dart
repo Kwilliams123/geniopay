@@ -36,7 +36,7 @@ class PayCard extends StatelessWidget {
       width: size.width,
       height: 65,
       padding: const EdgeInsets.only(left: 20, top: 10, bottom: 10),
-      margin: const EdgeInsets.symmetric(horizontal: 20),
+      margin: const EdgeInsets.symmetric(horizontal: 2),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         color: genioContainerColor[100]

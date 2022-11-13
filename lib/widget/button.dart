@@ -8,9 +8,11 @@ class LargeButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Container(
+    return InkWell(
+    onTap: callback,
+    child: Container(
       padding: const EdgeInsets.symmetric(vertical: 20,),
-      margin: const EdgeInsets.symmetric(horizontal: 20),
+      margin: const EdgeInsets.symmetric(horizontal: 2),
       width: size.width,
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.all(
@@ -26,7 +28,7 @@ class LargeButton extends StatelessWidget {
         ),
         textAlign: TextAlign.center
       ),
-
+    ),
     );
   }
 }

@@ -46,7 +46,7 @@ class DashboardCard extends StatelessWidget {
     final fromCountryPicker = Row(
       children: [
         usd,
-        SizedBox(width: 5,),
+        const SizedBox(width: 5,),
         const Text(
           'USD',
           style: TextStyle(
@@ -55,7 +55,7 @@ class DashboardCard extends StatelessWidget {
             fontSize: 14,
           ),
         ),
-         SizedBox(width: 5,),
+         const SizedBox(width: 5,),
          InkWell(
           onTap: tapArrow ,
           child: const Icon(
@@ -123,12 +123,11 @@ class DashboardCard extends StatelessWidget {
         ),),
      ],
     );
-
     return Container(
       width: size.width,
       height: 170,
       alignment: AlignmentDirectional.centerEnd,
-      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      margin: const EdgeInsets.symmetric(horizontal: 2),
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       decoration: BoxDecoration(
         color: Colors.white,

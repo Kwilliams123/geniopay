@@ -2,6 +2,7 @@ import 'package:geniopay/model/receiver.dart';
 
 class Transaction {
   late int id;
+  late double transCharge;
   late double exchangeRate;
   late String sendFrom;
   late String sendTo;
@@ -12,6 +13,7 @@ class Transaction {
 
   Transaction({
     required this.id,
+    required this.transCharge,
     required this.exchangeRate,
     required this.sendFrom,
     required this.sendTo,
@@ -22,6 +24,7 @@ class Transaction {
 
   Transaction.fromJson(Map data) {
     id = data['id'];
+    transCharge = data['trans_charge'];
     exchangeRate = data['exchange_rate'];
     sendFrom = data['send_from'];
     sendTo = data['send_to'];
@@ -33,6 +36,7 @@ class Transaction {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
+      'trans_charge' : transCharge,
       'exchange_rate': exchangeRate,
       'send_from': sendFrom,
       'send_to': sendTo,
