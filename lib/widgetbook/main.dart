@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geniopay/model/transaction.dart';
 import 'package:geniopay/view/international_transfer/international_transfer.dart';
+import 'package:geniopay/view/proof_identity/proof_identity.dart';
 import 'package:geniopay/widget/button.dart';
 import 'package:geniopay/widget/dashboard_card.dart';
 import 'package:geniopay/widget/delivery_time_card.dart';
@@ -77,6 +78,10 @@ class WidgetBooks extends StatelessWidget {
                   name: 'Internation Transfer',
                   builder: (context) => const ScreenViewer(InternationalTransfer()),
                 ),
+                WidgetbookUseCase(
+                  name: 'Proof Identity',
+                  builder: (context) => ScreenViewer(ProofIdentity(tapArrowBack: (){}, tapLink: (){},)),
+                )
               ],
             )
           ],

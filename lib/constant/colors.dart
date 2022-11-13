@@ -11,4 +11,7 @@ const genioContainerColor =  {50:Color(0xffe0f7fe),
   100: Color(0xff008aa7)
 };
 
+const textColor = {100: Color(0xff434343)};
+
+
 
