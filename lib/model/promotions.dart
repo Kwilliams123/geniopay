@@ -1,22 +1,25 @@
 class Promotions {
+  late int id;
   late String title;
   late String description;
-  late String svg;
+  late String srcImage;
 
-  Promotions({required this.title,
-    required this.description, this.svg = 'message' });
+  Promotions({required this.id, required this.title,
+    required this.description, this.srcImage = 'promotion_image' });
 
   Promotions.fromJson(Map<String, dynamic> data){
+    id   = data['id'];
     title  = data['title'];
     description = data['description'];
-    svg = data['svg'];
+    srcImage = data['src_image'] ?? 'promotion_image';
   }
 
   Map<String, dynamic> toJson(){
     return {
+      'id': id,
       'title' : title,
       'description': description,
-      'svg': svg,
+      'src_image': srcImage,
     };
   }
 }

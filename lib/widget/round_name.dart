@@ -9,8 +9,8 @@ class RoundName extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Container(
-      width: 30,
-      height: 30,
+      width: 36,
+      height: 36,
       decoration: BoxDecoration(
         color: genioContainerColor[50],
         shape: BoxShape.circle,
@@ -19,9 +19,9 @@ class RoundName extends StatelessWidget {
       child: Text(
           text.substring(0,1).toUpperCase(),
         style: const TextStyle(
-          color: Colors.white,
+          color: Colors.red,
           fontWeight: FontWeight.w700,
-          fontSize: 19,
+          fontSize: 20,
         ),
       ),
       ),

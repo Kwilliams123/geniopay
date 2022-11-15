@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
+
 
 const  largeButtonColor = Color(0xffebd75c);
 final  boxShadowColor = const Color(0xff07051a).withOpacity(0.07);
@@ -20,6 +22,8 @@ final homeGradientColors = [
   const Color(0xffe0f7fe),
   const Color(0xffffffff).withOpacity(0.15)
 ];
+
+final promotionColor = {1: Colors.blue, 2:Colors.red, 3:Colors.green};
 
 
 

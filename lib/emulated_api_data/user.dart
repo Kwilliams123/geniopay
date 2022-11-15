@@ -13,7 +13,7 @@ final List<Map<String, dynamic>> purchaseTransaction = [{
   'entity': 'Dribble',
   'trans_date': Utils.time(const Duration(days: 8), format: true),
   'amount' : 49,
-  'status': status[2],
+  'status': status[1],
 },{
   'id': 3,
   'entity': 'Spotify',
@@ -22,7 +22,7 @@ final List<Map<String, dynamic>> purchaseTransaction = [{
   'status': status[2],
 },{
   'id': 4,
-  'entity': 'Dribble',
+  'entity': 'Spotify',
   'trans_date': Utils.time(const Duration(days: 9), format: true),
   'amount' : 790,
   'status': status[1],
