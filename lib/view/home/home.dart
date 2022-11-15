@@ -47,14 +47,16 @@ class _Home extends State<Home> {
                   color: Colors.red,
                   shape: BoxShape.circle,
                 ),
-                child: Text(
+                child:
+                Center (child:
+                Text(
                   vm.userData.notificationCount.toString(),
                   style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w400,
                     fontSize: 8,
                   ),
-                ),
+                ),),
               ),
             )
           ],
@@ -67,9 +69,7 @@ class _Home extends State<Home> {
       ],
     );
 
-    final greetingParent = Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
+    final greetingParent = Column(
       children:  [
         Text(
           Utils.greetings(),
@@ -79,7 +79,13 @@ class _Home extends State<Home> {
             color: genioContainerColor[100]
           ),
         ),
-        iconRow,
+        const SizedBox(height: 6,),
+        Text(vm.userData.name,
+          style: TextStyle(
+            color: genioContainerColor[100],
+            fontWeight: FontWeight.w700,
+            fontSize: 18,
+          ),)
       ],
     );
 
@@ -96,25 +102,12 @@ class _Home extends State<Home> {
         SvgPicture.asset('svg/star.svg'),
       ],
     );
-    
-    final personNameParent = Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+    final iconsRewardParent = Column(
       children: [
-       Text(vm.userData.name,
-       style: TextStyle(
-         color: genioContainerColor[100],
-         fontWeight: FontWeight.w700,
-         fontSize: 18,
-       ),),
-        rewardRow,
-      ],
-    );
-    
-    final namedGreetingsParent = Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-      greetingParent,
-      personNameParent,  
+      iconRow,
+      const SizedBox(height: 6,),
+      rewardRow,
       ],
     );
     
@@ -131,21 +124,31 @@ class _Home extends State<Home> {
       ),
     ),);
     
-    final topRow = Row(
+    final topRow = Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-         avatar,
-         const SizedBox(width: 10,),
-        namedGreetingsParent,
+        Row(
+          children: [
+            avatar,
+            const SizedBox(width: 20,),
+            greetingParent,
+          ],
+        ),
+         iconsRewardParent,
       ],
+    ),
     );
 
     final usdArrow = Container(
+      width: 56,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: genioContainerColor[100]?.withOpacity(0.3)
       ),
-      padding: const EdgeInsets.all(5),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Text('USD',
         style: TextStyle(
@@ -153,7 +156,6 @@ class _Home extends State<Home> {
           fontWeight: FontWeight.w500,
           fontSize: 10,
         ),),
-          const SizedBox(width: 5,),
           Icon(
             Icons.keyboard_arrow_down_outlined,
             color: genioContainerColor[100],
@@ -171,9 +173,23 @@ class _Home extends State<Home> {
       ],
     );
 
-    final middleParent = Column(
+    final gradient = LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+      colors: homeGradientColors,
+    );
+    final middleParent = Container(
+      margin: const EdgeInsets.symmetric(horizontal:20, ),
+      padding: const EdgeInsets.symmetric(vertical: 30,),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(30,),
+        border: Border.all(
+          color: const Color(0xff008aa7),
+          width: 2,
+        )
+      ),
+      child: Column(
       crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
           'Total Balance',
@@ -192,28 +208,35 @@ class _Home extends State<Home> {
             fontSize: 44,
           ),
         ),
-        const SizedBox(height: 20,),
+     const SizedBox(height: 20,),
         usdArrow,
         const SizedBox(height: 20 ,),
-        const Expanded(child: Divider(
+         const Padding(
+           padding: EdgeInsets.symmetric(horizontal: 20),
+           child: Divider(
+           height: 4,
           color: lineColor,
-            ),
-            ),
+            ),),
         const SizedBox(height: 10,),
         iconParent,
       ]
+    ),
     );
     
-    return Container(
-     color: genioContainerColor[50],
+    return
+      Scaffold(
+        body: Container(
       padding: const EdgeInsets.only(top: 20),
+      decoration: BoxDecoration(
+        gradient: gradient,
+      ),
       child: Column(
         children: [
           topRow,
+          const SizedBox(height: 35,),
           middleParent,
-
         ],
       ),
-    );
+    ),);
   }
 }

@@ -1,4 +1,8 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:geniopay/model/purchase_transaction.dart';
+import 'package:json_helpers/json_helpers.dart';
 
 class User {
   late String name;
@@ -21,7 +25,9 @@ class User {
     balance = data['balance'];
     numRewards = data['num_rewards'];
     notificationCount = data['notification_count'];
-    purchase = data['purchase'];
+    dynamic allPurchase = data['purchase'];
+    purchase = List<PurchaseTransaction>.from(
+        allPurchase.map((e) => PurchaseTransaction.fromJson(e)));
   }
 
   Map<String, dynamic> toJson(){
@@ -32,7 +38,7 @@ class User {
       'balance': balance,
       'num_rewards': numRewards,
       'notification_count': notificationCount,
-      'purchase': purchase.map((e) => e.toJson())
+      'purchase': purchase.map((e) => e.toJson()).toList()
     };
   }
 

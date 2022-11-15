@@ -16,5 +16,10 @@ const textColor = {50: Color(0xfff9fafb),
 const transactionColor = {'Completed': Color(0xff15cf74),
   'In Progress': Color(0xfffb923c) };
 
+final homeGradientColors = [
+  const Color(0xffe0f7fe),
+  const Color(0xffffffff).withOpacity(0.15)
+];
+
 
 
