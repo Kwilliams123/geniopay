@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:geniopay/main.dart';
 import 'package:geniopay/model/transaction.dart';
 import 'package:geniopay/view/home/home.dart';
+import 'package:geniopay/view/home/home_bottom_sheet.dart';
 import 'package:geniopay/view/international_transfer/international_transfer.dart';
 import 'package:geniopay/view/proof_identity/proof_identity.dart';
 import 'package:geniopay/widget/button.dart';
@@ -10,12 +11,14 @@ import 'package:geniopay/widget/delivery_time_card.dart';
 import 'package:geniopay/widget/pay_card.dart';
 import 'package:geniopay/widgetbook/screen_viewer.dart';
 import 'package:geniopay/widgetbook/widget-viewer.dart';
+import 'package:provider/provider.dart';
 import 'package:widgetbook/widgetbook.dart';
 
 import '../emulated_api_data/transaction.dart';
 import '../widget/payment_method_card.dart';
 import '../widget/receiver_card.dart';
 import '../widget/reference_card.dart';
+import '../constant/init_provider.dart';
 
 void main() => runApp(WidgetBooks());
 
@@ -89,7 +92,7 @@ class WidgetBooks extends StatelessWidget {
                   builder: (context) => const ScreenViewer(Home()),
                 )
               ],
-            )
+            ),
           ],
         )
       ],

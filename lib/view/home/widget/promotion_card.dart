@@ -13,6 +13,7 @@ class PromotionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     final textColumn = Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
@@ -34,6 +35,8 @@ class PromotionCard extends StatelessWidget {
       ],
     );
     return Container(
+      width: 0.7*size.width,
+      height: 93,
       padding: const EdgeInsets.all(20,),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
