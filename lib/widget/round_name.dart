@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geniopay/constant/colors.dart';
+import 'package:geniopay/extended_function/extensions.dart';
 
 class RoundName extends StatelessWidget {
   final String text;
@@ -17,7 +18,7 @@ class RoundName extends StatelessWidget {
       ),
       child:Center(
       child: Text(
-          text.substring(0,1).toUpperCase(),
+          text.firstLetter,
         style: const TextStyle(
           color: Colors.red,
           fontWeight: FontWeight.w700,

@@ -14,7 +14,8 @@ const textColor = {50: Color(0xfff9fafb),
   100: Color(0xff434343),
   150 : Color(0xff001b21) ,
   200 : Color(0xff8e8e8e),
-  250 : Color(0xff2b4146)};
+  250 : Color(0xff2b4146),
+  300: Color(0xff5d5d5d),};
 const transactionColor = {'Completed': Color(0xff15cf74),
   'In Progress': Color(0xfffb923c) };
 
@@ -23,6 +24,14 @@ final homeGradientColors = [
   const Color(0xffffffff).withOpacity(0.15)
 ];
 
+final insuranceGradientColors = [
+  const Color(0xff3ec9e7),
+  const Color(0xff008aa7)
+];
+final insuranceInnerGradientColors = [
+
+  const Color(0xff008aa7).withOpacity(0.3),  const Color(0xff3ec9e7),
+];
 final promotionColor = {1: Colors.blue, 2:Colors.red, 3:Colors.green};
 
 
