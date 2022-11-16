@@ -18,6 +18,7 @@ import 'package:provider/provider.dart';
 import 'package:widgetbook/widgetbook.dart';
 
 import '../emulated_api_data/transaction.dart';
+import '../view/proof_identity/widget/description_row.dart';
 import '../widget/payment_method_card.dart';
 import '../widget/receiver_card.dart';
 import '../widget/reference_card.dart';
@@ -61,6 +62,12 @@ class WidgetBooks extends StatelessWidget {
                   name: 'Premium Plan',
                   builder: (context) => const OtherWidgetsViewer(child: InsurancePlan(planName:
                       'Premium Plan',spendUpTo: '600', getUpTo: '15,000',
+                  )),
+                ),
+                WidgetbookUseCase(
+                  name: 'Identity Row',
+                  builder: (context) => WidgetViewer(DescriptionRow(
+                    title: 'Valid Government Issued ID Document Scan', svg:'issued_card',linkText: 'learn more', onLinkTap: (){},
                   )),
                 ),
               ],
