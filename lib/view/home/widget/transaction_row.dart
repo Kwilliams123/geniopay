@@ -7,19 +7,33 @@ import 'package:geniopay/widget/round_name.dart';
 
 class TransactionRow extends StatelessWidget {
   final PurchaseTransaction purchase;
+
   const TransactionRow({required this.purchase, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final topRow = Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    final entityDateParent = Column(
       children: [
         Text(purchase.entity,
-        style: TextStyle(
-          color: textColor[150],
-          fontWeight: FontWeight.w400,
-          fontSize: 13,
-        ),),
+          style: TextStyle(
+            color: textColor[150],
+            fontWeight: FontWeight.w400,
+            fontSize: 13,
+          ),),
+        const SizedBox(height: 10,),
+        Text(
+          purchase.transDate,
+          style: TextStyle(
+            color: textColor[200],
+            fontWeight: FontWeight.w400,
+            fontSize: 10,
+          ),
+        )
+      ],
+    );
+
+    final amountStatusParent = Column(
+      children: [
         Text(
           '-\$ ${Utils.moneyFormattedText(purchase.amount.toString())}',
           style: TextStyle(
@@ -27,21 +41,8 @@ class TransactionRow extends StatelessWidget {
             fontWeight: FontWeight.w400,
             fontSize: 13,
           ),
-        )
-      ],
-    );
-
-    final bottomRow = Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-            Text(
-              purchase.transDate,
-              style: TextStyle(
-                color: textColor[200],
-                fontWeight: FontWeight.w400,
-                fontSize: 10,
-              ),
-            ),
+        ),
+        const SizedBox(height: 10,),
         Text(
           purchase.status,
           style: TextStyle(
@@ -52,21 +53,21 @@ class TransactionRow extends StatelessWidget {
         ),
       ],
     );
-    return Row(
-      children: [
-        // only spotify and dribble are in the svg folder for now.
-        (purchase.entity.toLowerCase() == 'spotify' ||
-            purchase.entity.toLowerCase() == 'dribble' )?
-         SvgPicture.asset('svg/${purchase.entity.toLowerCase()}.svg') :
-            RoundName(text: purchase.entity),
-        const SizedBox(width: 20,),
-        Row(
-          children: [
-            topRow,
-            bottomRow
-          ],
-        )
-      ],
-    );
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20,),
+      child: Row(
+        children: [
+          // only spotify and dribble are in the svg folder for now.
+          (purchase.entity.toLowerCase() == 'spotify' ||
+              purchase.entity.toLowerCase() == 'dribble') ?
+          SvgPicture.asset('svg/${purchase.entity.toLowerCase()}.svg') :
+          RoundName(text: purchase.entity),
+          const SizedBox(width: 20,),
+
+          entityDateParent,
+          const Spacer(),
+          amountStatusParent,
+        ],
+      ),);
   }
 }

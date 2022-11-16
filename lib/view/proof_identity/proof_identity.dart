@@ -87,7 +87,7 @@ class ProofIdentity extends StatelessWidget {
                         recognizer: TapGestureRecognizer()
                           ..onTap = () => tapLink),
                   ),
-          ])
+          ]),
         ],
       );
     }

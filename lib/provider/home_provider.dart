@@ -8,14 +8,16 @@ import '../model/promotions.dart';
 class HomeProvider extends BaseProvider{
 
   late User _user;
+  late bool showBalance;
   late List<Promotions> _promotion;
   User get userData => _user;
-  List<Promotions> get promotion => _promotion;
+  List<Promotions> get promotion => _promotions();
 
   @override
   init() async {
    _getUser();
-   _promotions();
+   //_promotions();
+   showBalance = true;
    super.init();
   }
 
@@ -31,8 +33,12 @@ class HomeProvider extends BaseProvider{
     // todo -> set UI false
   }
 
+  toggleShowBalance(){
+    showBalance = !showBalance;
+  }
+
   _promotions(){
-    _promotion = List<Promotions>.from(
+    return List<Promotions>.from(
         promotions.map((e) => Promotions.fromJson(e)));
   }
 

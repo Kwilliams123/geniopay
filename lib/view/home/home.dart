@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:geniopay/constant/colors.dart';
 import 'package:geniopay/provider/home_provider.dart';
 import 'package:geniopay/utils/utils.dart';
+import 'package:geniopay/view/home/home_bottom_sheet.dart';
 import 'package:geniopay/view/home/widget/round_items.dart';
 import 'package:provider/provider.dart';
 
@@ -26,6 +27,19 @@ class _Home extends State<Home> {
   @override
   Widget build(BuildContext context) {
     vm = context.watch<HomeProvider>();
+
+    final showHide = InkWell(
+      onTap: () {
+        vm.toggleShowBalance();
+        // let the state change for the balance to toggle ${balance} <=> HIDDEN
+        setState(() {});
+      },
+      child: Icon(
+        Icons.remove_red_eye_outlined,
+        color: genioContainerColor[100],
+        size: 14,
+      ),
+    );
 
     final iconRow = Row(
       children: [
@@ -209,21 +223,33 @@ class _Home extends State<Home> {
             width: 2,
           )),
       child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-        Text(
-          'Total Balance',
-          style: TextStyle(
-            color: genioContainerColor[100],
-            fontWeight: FontWeight.w400,
-            fontSize: 12,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20,),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const SizedBox(),
+              Text(
+                'Total Balance',
+                style: TextStyle(
+                  color: genioContainerColor[100],
+                  fontWeight: FontWeight.w400,
+                  fontSize: 12,
+                ),
+              ),
+              showHide,
+            ],
           ),
         ),
         const SizedBox(
           height: 20,
         ),
         Text(
-          '\$${Utils.moneyFormattedText(
-            vm.userData.balance.toString(),
-          )}',
+          vm.showBalance
+              ? '\$${Utils.moneyFormattedText(
+                  vm.userData.balance.toString(),
+                )}'
+              : 'HIDDEN',
           style: TextStyle(
             color: genioContainerColor[100],
             fontWeight: FontWeight.w600,
@@ -270,10 +296,10 @@ class _Home extends State<Home> {
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: (){},
-         child: SvgPicture.asset('svg/geniopay_logo.svg'),),
-      floatingActionButtonLocation:
-      FloatingActionButtonLocation.centerDocked,
+        onPressed: () {},
+        child: SvgPicture.asset('svg/geniopay_logo.svg'),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
         notchMargin: 4,
@@ -286,15 +312,22 @@ class _Home extends State<Home> {
               SvgPicture.asset('svg/home_navigation.svg'),
               SvgPicture.asset('svg/transaction_navigation.svg'),
               SvgPicture.asset('svg/wallet_navigation.svg'),
-              const Icon(Icons.menu_sharp,
-              color: Colors.black,),
+              const Icon(
+                Icons.menu_sharp,
+                color: Colors.black,
+              ),
             ],
           ),
         ),
       ),
       body: PageStorage(
         bucket: bucket,
-        child: home,
+        child: Stack(
+          children: [
+            home,
+            HomeBottomSheet(vm: vm),
+          ],
+        ),
       ),
     );
   }

@@ -3,12 +3,15 @@ import 'package:geniopay/main.dart';
 import 'package:geniopay/model/transaction.dart';
 import 'package:geniopay/view/home/home.dart';
 import 'package:geniopay/view/home/home_bottom_sheet.dart';
+import 'package:geniopay/view/insurance/insurance.dart';
+import 'package:geniopay/view/insurance/widget/insurance_plan.dart';
 import 'package:geniopay/view/international_transfer/international_transfer.dart';
 import 'package:geniopay/view/proof_identity/proof_identity.dart';
 import 'package:geniopay/widget/button.dart';
 import 'package:geniopay/widget/dashboard_card.dart';
 import 'package:geniopay/widget/delivery_time_card.dart';
 import 'package:geniopay/widget/pay_card.dart';
+import 'package:geniopay/widgetbook/other_widgets_viewer.dart';
 import 'package:geniopay/widgetbook/screen_viewer.dart';
 import 'package:geniopay/widgetbook/widget-viewer.dart';
 import 'package:provider/provider.dart';
@@ -39,6 +42,26 @@ class WidgetBooks extends StatelessWidget {
                 WidgetbookUseCase(
                   name: 'short name',
                   builder: (context) => WidgetViewer(LargeButton('Send Money', (){},)),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Other Widgets',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Basic Plan',
+                  builder: (context) => const OtherWidgetsViewer(child: InsurancePlan()),
+                ),
+                WidgetbookUseCase(
+                  name: 'Gold Plan',
+                  builder: (context) => const OtherWidgetsViewer(child: InsurancePlan(planName:
+                  'Gold Plan',spendUpTo: '400', getUpTo: '10,000',)),
+                ),
+                WidgetbookUseCase(
+                  name: 'Premium Plan',
+                  builder: (context) => const OtherWidgetsViewer(child: InsurancePlan(planName:
+                      'Premium Plan',spendUpTo: '600', getUpTo: '15,000',
+                  )),
                 ),
               ],
             ),
@@ -90,6 +113,10 @@ class WidgetBooks extends StatelessWidget {
                 WidgetbookUseCase(
                   name: 'Home Page',
                   builder: (context) => const ScreenViewer(Home()),
+                ),
+                WidgetbookUseCase(
+                  name: 'Insurance Page',
+                  builder: (context) => const ScreenViewer(Insurance()),
                 )
               ],
             ),
