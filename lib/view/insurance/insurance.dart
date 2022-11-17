@@ -118,7 +118,6 @@ class _InsuranceState extends State<Insurance> {
            dots,
            const SizedBox(height: 20,),
           learnMoreText,
-
         ],
       ),
     );
