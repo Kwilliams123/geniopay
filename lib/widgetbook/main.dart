@@ -178,7 +178,7 @@ class WidgetBooks extends StatelessWidget {
                 ),
                 WidgetbookUseCase(
                   name: 'Registration Tax Page',
-                  builder: (context) => const ScreenViewer(RegistrationTax()),
+                  builder: (context) => ScreenViewer(RegistrationTax()),
                 ),
               ],
             ),

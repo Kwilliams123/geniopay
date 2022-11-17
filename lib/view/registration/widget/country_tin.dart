@@ -28,7 +28,7 @@ class CountryTin extends StatelessWidget {
 
     return Column(
       children: [
-        CountrySelection(onTap: arrowDownTap),
+        CountrySelection(countryName: countryName, onTap: arrowDownTap),
         const SizedBox(
           height: 16,
         ),
