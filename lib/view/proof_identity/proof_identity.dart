@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:geniopay/constant/colors.dart';
+import 'package:geniopay/routes/routes.dart';
 import 'package:geniopay/view/proof_identity/widget/description_row.dart';
 import 'package:geniopay/widget/button.dart';
 
@@ -13,6 +14,7 @@ class ProofIdentity extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     final identityText = RichText(
       text: const TextSpan(children: [
         TextSpan(
@@ -33,6 +35,8 @@ class ProofIdentity extends StatelessWidget {
         ),
       ]),
     );
+
+    void goBack() => Navigator.of(context).pop();
 
     final header = Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -69,8 +73,10 @@ class ProofIdentity extends StatelessWidget {
         ),
       ),
     );
+    void onContinue() =>
+      Navigator.of(context).pushNamed(Routes.homeRoute);
 
-    final continueButton = LargeButton('Continue', () {});
+    final continueButton = LargeButton('Continue', ()=> onContinue());
 
     final additionalInformationText = Text(
       'There may also be rare situations where we would require you to upload additional documents',
@@ -99,7 +105,9 @@ class ProofIdentity extends StatelessWidget {
           onLinkTap: () {})
     ];
 
-    final baseParent = Container(
+    final baseParent = Flexible(
+      child: Container(
+      height: size.height,
       padding: const EdgeInsets.symmetric(
         vertical: 20,
         horizontal: 20,
@@ -108,8 +116,7 @@ class ProofIdentity extends StatelessWidget {
           color: Colors.white,
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20), topRight: Radius.circular(20))),
-      child: SingleChildScrollView(
-        child: Column(
+      child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const SizedBox(
@@ -128,15 +135,15 @@ class ProofIdentity extends StatelessWidget {
               height: 30,
             ),
             continueButton,
-            const SizedBox(
-              height: 30,
-            ),
+            const Spacer(),
           ],
         ),
       ),
     );
 
-    return Container(
+    return Scaffold(
+        body: SafeArea(
+        child: Container(
       padding: const EdgeInsets.only(
         top: 20,
       ),
@@ -161,8 +168,9 @@ class ProofIdentity extends StatelessWidget {
             height: 30,
           ),
           baseParent,
+
         ],
-      ),
+      ),),),
     );
   }
 }

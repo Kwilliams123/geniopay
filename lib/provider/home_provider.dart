@@ -1,7 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:geniopay/emulated_api_data/promotions.dart';
 import 'package:geniopay/emulated_api_data/user.dart';
 import 'package:geniopay/model/user.dart';
 import 'package:geniopay/provider/provider.dart';
+import 'package:geniopay/routes/routes.dart';
 
 import '../model/promotions.dart';
 
@@ -45,4 +47,10 @@ class HomeProvider extends BaseProvider{
   dynamic viewAll() async{
     //when user click view all text, fetch all the data from the pagination.
   }
+
+  goTransferScreen(BuildContext context) =>
+    Navigator.of(context).pushNamed(Routes.internationTransferRoute);
+
+  goInsuranceScreen(BuildContext context) => Navigator.of(context).pushNamed(Routes.insurancePlanRoute);
+
 }

@@ -14,6 +14,7 @@ import 'package:geniopay/widget/button.dart';
 import 'package:geniopay/widget/dashboard_card.dart';
 import 'package:geniopay/widget/delivery_time_card.dart';
 import 'package:geniopay/widget/pay_card.dart';
+import 'package:geniopay/widgetbook/flow.dart';
 import 'package:geniopay/widgetbook/other_widgets_viewer.dart';
 import 'package:geniopay/widgetbook/screen_viewer.dart';
 import 'package:geniopay/widgetbook/widget-viewer.dart';
@@ -108,6 +109,7 @@ class WidgetBooks extends StatelessWidget {
                   name: 'Country Tin',
                   builder: (context) => WidgetViewer(
                     CountryTin(controller: controller,
+                      index: 1,
                       arrowDownTap: (){},
                       deleteButtonTap: (){},
                     ),
@@ -174,11 +176,15 @@ class WidgetBooks extends StatelessWidget {
                 ),
                 WidgetbookUseCase(
                   name: 'Insurance Page',
-                  builder: (context) => const ScreenViewer(Insurance()),
+                  builder: (context) => const ScreenViewer(Insurance(index: 2,)),
                 ),
                 WidgetbookUseCase(
                   name: 'Registration Tax Page',
                   builder: (context) => ScreenViewer(RegistrationTax()),
+                ),
+                WidgetbookUseCase(
+                  name: 'Flow',
+                  builder: (context) => const Flows(),
                 ),
               ],
             ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:geniopay/routes/routes.dart';
 import 'package:geniopay/view/home/home.dart';
 import 'package:provider/provider.dart';
+import 'package:geniopay/constant/router.dart';
 
 import 'constant/init_provider.dart';
 
@@ -29,9 +31,8 @@ class _HomePageState extends State<HomePage> {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(primarySwatch: Colors.blue),
-        home: const SafeArea(
-          child: Home(),
-        ),
+        onGenerateRoute: router,
+        initialRoute: Routes.registrationTaxRoute,
       ),
     );
   }

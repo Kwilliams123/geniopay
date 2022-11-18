@@ -8,21 +8,23 @@ import '../../../widget/text_input_field.dart';
 class CountryTin extends StatelessWidget {
   final TextEditingController controller;
   final String countryName;
-  final VoidCallback arrowDownTap;
+  final  VoidCallback arrowDownTap;
   final VoidCallback deleteButtonTap;
+  final int index;
 
   const CountryTin(
       {this.countryName = 'Brazil',
       required this.controller,
       required this.arrowDownTap,
       required this.deleteButtonTap,
+        required this.index,
       Key? key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final delete = Align(
-      alignment: Alignment.topRight,
+      alignment: Alignment.centerRight,
       child: SvgPicture.asset('svg/delete.svg'),
     );
 
@@ -38,8 +40,10 @@ class CountryTin extends StatelessWidget {
         const SizedBox(height: 10,),
         InkWell(
           onTap: deleteButtonTap,
-          child: delete,
-        ),
+          child: Padding(
+            padding: const EdgeInsets.only(right: 3),
+           child: delete,
+        ),),
         const SizedBox(height: 20,),
       ],
     );

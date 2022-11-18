@@ -20,8 +20,8 @@ class RoundItems extends StatelessWidget {
       colors: insuranceInnerGradientColors,
     );
     final text = Container(
-      height: 50,
-      width: 50,
+      height: 60,
+      width: 60,
       decoration: BoxDecoration(
         gradient: gradient,
         shape: BoxShape.circle,
@@ -32,15 +32,16 @@ class RoundItems extends StatelessWidget {
           style: const TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.w700,
-            fontSize: 45,
+            fontSize: 50,
           ),
         ),
       ),
     );
 
     return Container(
-      height: 60,
-      width: 60,
+      height: 75,
+      width: 75,
+      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 6),
       decoration: BoxDecoration(
         color: const Color(0xff008aa7).withOpacity(0.07),
         shape: BoxShape.circle,
