@@ -72,14 +72,26 @@ class DashboardCard extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         fromCountryPicker,
-        Text(
-          '\$${Utils.moneyFormattedText(transaction.receiver.amount.toString())}',
-          style: const TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.w600,
-            fontSize: 16,
-          ),
-        )
+        RichText(text: TextSpan(
+          children: [
+            const TextSpan(
+              text: '\$',
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.w600,
+                fontSize: 16,
+              ),
+            ),
+            TextSpan(
+              text: '${Utils.moneyFormattedText(transaction.receiver.amount.toString())}',
+              style: const TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.w600,
+                fontSize: 25,
+              ),
+            )
+          ]
+        ),),
       ],
     );
 
@@ -101,14 +113,26 @@ class DashboardCard extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         fromCountryPicker,
-        Text(
-          '€${Utils.moneyFormattedText(amountReceived.toString())}',
-          style:  TextStyle(
-            color: genioContainerColor[100],
-            fontWeight: FontWeight.w600,
-            fontSize: 16,
-          ),
-        )
+        RichText(text: TextSpan(
+          children: [
+            TextSpan(
+              text: '€',
+              style:  TextStyle(
+                color: genioContainerColor[100],
+                fontWeight: FontWeight.w600,
+                fontSize: 16,
+              ),
+            ),
+            TextSpan(
+              text: '${Utils.moneyFormattedText(amountReceived.toString())}',
+              style:  TextStyle(
+                color: genioContainerColor[100],
+                fontWeight: FontWeight.w600,
+                fontSize: 25,
+              ),
+            ),
+          ]
+        ),),
       ],
     );
 

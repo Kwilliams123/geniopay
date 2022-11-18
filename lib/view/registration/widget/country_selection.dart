@@ -21,7 +21,7 @@ class CountrySelection extends StatelessWidget {
     );
 
     final countryIcon = SvgPicture.asset(
-        'svg/${countryName.toLowerCase() == 'brazil' ? 'brazil' : 'usa'}.svg');
+        'svg/${countryName.toLowerCase() == 'brazil' ? 'brazil' : 'usd'}.svg');
 
     final countryText = RichText(
       text : TextSpan(

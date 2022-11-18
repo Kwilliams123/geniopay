@@ -1,26 +1,65 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:geniopay/constant/colors.dart';
+import 'package:geniopay/extended_function/extensions.dart';
+import 'package:geniopay/provider/registration_tax_provider.dart';
+import 'package:geniopay/utils/Utils.dart';
+import 'package:geniopay/view/registration/widget/add_country.dart';
 import 'package:geniopay/view/registration/widget/country_tin.dart';
+import 'package:geniopay/widget/button.dart';
+import 'package:provider/provider.dart';
 
 class RegistrationTax extends StatefulWidget {
-  const RegistrationTax({super.key});
+  RegistrationTax({super.key});
+
 
   @override
   State<RegistrationTax> createState() => _RegistrationTaxState();
 }
 
 class _RegistrationTaxState extends State<RegistrationTax> {
+  late RegistrationTaxProvider vm;
+
+
   @override
   void initState() {
     // TODO: implement initState
+    vm = context.read<RegistrationTaxProvider>();
+    vm.init();
+
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    vm = context.watch<RegistrationTaxProvider>();
+    late Widget firstTin;
     final TextEditingController controller = TextEditingController();
-    final List<CountryTin> countryTin = [CountryTin(controller: controller, arrowDownTap: (){}, deleteButtonTap: (){})];
-    
+
+
+    // todo -> use form global keys to track the controllers and form states
+
+
+
+    void onAddCountry() {
+      // todo -> create just in time controllers for
+      // update the UI
+      setState(() {
+        vm.countryTin.add(CountryTin(countryName : 'USA',
+            index: vm.countryTin.length,
+            controller: TextEditingController(), arrowDownTap: (){},
+            deleteButtonTap:() {
+                     setState(() {
+                       vm.countryTin.removeAt(0);
+                     });
+            }
+              ));
+      });
+    }
+
+    //onAddCountry();
+
     final header = Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -58,12 +97,6 @@ class _RegistrationTaxState extends State<RegistrationTax> {
       color: Colors.black,
       fontWeight: FontWeight.w400,
       fontSize: 16,
-    );
-
-    final normalStyle = TextStyle(
-      color: textColor[250],
-      fontWeight: FontWeight.w300,
-      fontSize: 14,
     );
 
     const boldBlackStyle2 = TextStyle(
@@ -118,6 +151,7 @@ class _RegistrationTaxState extends State<RegistrationTax> {
       'where you are tax resident and your TIN (Taxpay '
       'Identification Number) for each country:',
       style: boldBlackStyle2,
+      softWrap: true,
     );
 
     final noticeParent1 = Column(
@@ -134,27 +168,225 @@ class _RegistrationTaxState extends State<RegistrationTax> {
       ],
     );
 
-    return Container(
+    final noticeParent2 = Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            '2. FATCA related',
+            style: boldStyle,
+          ),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        const Text(
+          'Please select one of the options by checking'
+          'the corresponding box below',
+          style: boldBlackStyle2,
+          softWrap: true,
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+      ],
+    );
+
+    final boldStyle2 = TextStyle(
+      color: genioContainerColor[100],
+      fontWeight: FontWeight.w300,
+      fontSize: 16,
+    );
+
+    final declarationParent1 = Padding(
+      padding: const EdgeInsets.symmetric(
+        vertical: 20,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Flexible(
+            child: RichText(
+              text: TextSpan(children: [
+                const TextSpan(
+                  text: 'I hereby certify that ',
+                  style: boldBlackStyle2,
+                ),
+                TextSpan(
+                  text: 'I am a tax resident of the United States',
+                  style: boldStyle2,
+                ),
+                const TextSpan(
+                  text: ' and that I have designated the United States as one '
+                      'of the countries in the above section.',
+                  style: boldBlackStyle2,
+                ),
+              ]),
+              softWrap: true,
+            ),
+          ),
+          const SizedBox(width: 30,),
+          Checkbox(
+              // checkColor: genioContainerColor[100],
+              value: vm.declaration1,
+              onChanged: (bool? val) {
+                setState(() {
+                  vm.declaration1 = !vm.declaration1;
+                  vm.declaration2 = !vm.declaration1;
+                });
+              })
+        ],
+      ),
+    );
+
+    final addButton = AddCountry(onAddTap: (){ onAddCountry();});
+
+    final divider = Column(
+      children: [
+        Divider(
+          color: genioContainerColor[50],
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+      ],
+    );
+
+
+
+    final declarationParent2 = Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Flexible(
+          child: RichText(
+            text: TextSpan(children: [
+              const TextSpan(
+                text: 'I hereby certify that ',
+                style: boldBlackStyle2,
+              ),
+              TextSpan(
+                text: 'I am not a tax resident of the United States.',
+                style: boldStyle2,
+              ),
+            ]),
+            softWrap: true,
+          ),
+        ),
+        const SizedBox(width: 30,),
+        Checkbox(
+            //checkColor: genioContainerColor[100],
+            value: vm.declaration2,
+            onChanged: (bool? val) {
+              setState(() {
+                vm.declaration2 = !vm.declaration2;
+                vm.declaration1 = !vm.declaration2;
+              });
+            })
+      ],
+    );
+
+    final declarationParent3 = Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Flexible(
+          child: RichText(
+              text: TextSpan(children: [
+            TextSpan(text: '3. Declaration\n\n', style: boldStyle),
+            const TextSpan(
+              text: 'I herby declare that the information '
+                  'provided on this form is complete, correct and true. '
+                  'The information provided may be used for reporting purposes according'
+                  ' to local law. I agree that I will inform you within 30 days if any'
+                  ' certification on this form becomes incorrect '
+                  'or will no longer be applied.',
+              style: boldBlackStyle2,
+            ),
+          ]),
+          softWrap: true,),
+        ),
+        const SizedBox(width: 30,),
+        Checkbox(
+            //checkColor: genioContainerColor[100],
+            value: vm.declaration3,
+            onChanged: (bool? val) {
+              setState(() {
+                vm.declaration3 = !vm.declaration3;
+              });
+            })
+      ],
+    );
+
+    final continueButton =
+        LargeButton('Continue', color: genioContainerColor[50]!, ()async => await vm.onContinue(context));
+    final bottomParent = Column(
+      children: [
+        Center(
+            child: Text(
+          'Date: ${Utils.dateNow()}',
+          style: boldStyle,
+        )),
+        const SizedBox(
+          height: 16,
+        ),
+        continueButton,
+      ],
+    );
+
+    firstTin = CountryTin(countryName : 'Brazil',
+        index: -1,
+        controller: TextEditingController(), arrowDownTap: (){},
+        deleteButtonTap:() {
+          setState(() {
+           // firstTin = Container();
+          });
+        }
+    );
+
+
+    return  Scaffold(
+        body: SafeArea(child:Container(
       padding: const EdgeInsets.symmetric(
         vertical: 20,
         horizontal: 20,
       ),
       color: Colors.white,
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            header,
-            const SizedBox(
-              height: 24,
-            ),
-            description,
-            noticeParent1,
-            const SizedBox(height: 24,),
-            ...countryTin,
-          ],
+      child: Column(children: [
+        header,
+        Expanded(
+     child: SingleChildScrollView(
+         child: Column(
+          children:[
+              const SizedBox(
+                height: 24,
+              ),
+              description,
+              noticeParent1,
+              const SizedBox(
+                height: 24,
+              ),
+              firstTin,
+              ...vm.countryTin,
+              addButton,
+              noticeParent2,
+              declarationParent1,
+              divider,
+              declarationParent2,
+              const SizedBox(
+                height: 20,
+              ),
+              divider,
+              declarationParent3,
+              const SizedBox(
+                height: 20,
+              ),
+              divider,
+              bottomParent,
+            ],
+          ),
         ),
-      ),
+        ),]),),
+        ),
     );
   }
 }

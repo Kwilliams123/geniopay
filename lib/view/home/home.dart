@@ -296,7 +296,7 @@ class _Home extends State<Home> {
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () => vm.goTransferScreen(context),
         child: SvgPicture.asset('svg/geniopay_logo.svg'),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -309,18 +309,26 @@ class _Home extends State<Home> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SvgPicture.asset('svg/home_navigation.svg'),
-              SvgPicture.asset('svg/transaction_navigation.svg'),
-              SvgPicture.asset('svg/wallet_navigation.svg'),
-              const Icon(
+              InkWell(
+                onTap: () => vm.goTransferScreen(context),
+               child: SvgPicture.asset('svg/home_navigation.svg'),),
+              InkWell(
+                onTap: () => vm.goTransferScreen(context),
+                child: SvgPicture.asset('svg/transaction_navigation.svg'),),
+              InkWell(
+                onTap: () => vm.goTransferScreen(context),
+                child: SvgPicture.asset('svg/wallet_navigation.svg'),),
+              IconButton(onPressed: () => vm.goInsuranceScreen(context), icon: const Icon(
                 Icons.menu_sharp,
                 color: Colors.black,
+              ),
               ),
             ],
           ),
         ),
       ),
-      body: PageStorage(
+      body:SafeArea(
+    child: PageStorage(
         bucket: bucket,
         child: Stack(
           children: [
@@ -329,6 +337,6 @@ class _Home extends State<Home> {
           ],
         ),
       ),
-    );
+    ),);
   }
 }

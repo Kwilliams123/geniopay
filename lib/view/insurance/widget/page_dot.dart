@@ -9,7 +9,7 @@ class PageDot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal:1,),
+      margin: const EdgeInsets.symmetric(horizontal:2,),
       width: size ,
      height: size,
      decoration: BoxDecoration(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geniopay/constant/colors.dart';
+import 'package:geniopay/view/insurance/widget/round_items.dart';
+import 'package:widgetbook/widgetbook.dart';
 
 class InsurancePlan extends StatelessWidget {
   final String planName;
@@ -15,7 +17,6 @@ class InsurancePlan extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     final planText = Center(
       child: Text(
         planName,
@@ -186,13 +187,36 @@ class InsurancePlan extends StatelessWidget {
       ],
     );
 
+    final insuranceCard = SingleChildScrollView(
+      child: Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        const SizedBox(
+          height: 40,
+        ),
+        planText,
+        const SizedBox(
+          height: 20,
+        ),
+        descriptionText,
+        const SizedBox(
+          height: 30,
+        ),
+        insuranceRow1,
+        divider,
+        insuranceRow2,
+        divider,
+        insuranceBottomParent,
+      ],
+    ),);
+
+
+
     return Container(
-      width: size.width,
       padding: const EdgeInsets.only(
-        top: 40,
         right: 20,
         left: 20,
-        bottom: 20,
+        bottom: 10,
       ),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -207,23 +231,7 @@ class InsurancePlan extends StatelessWidget {
           20,
         ),
       ),
-      child: Column(
-        children: [
-          planText,
-          const SizedBox(
-            height: 20,
-          ),
-          descriptionText,
-          const SizedBox(
-            height: 30,
-          ),
-          insuranceRow1,
-          divider,
-          insuranceRow2,
-          divider,
-          insuranceBottomParent,
-        ],
-      ),
+      child: insuranceCard,
     );
   }
 }

@@ -41,10 +41,10 @@ class _InternationalTransferState extends State<InternationalTransfer> {
       children: [
         InkWell(
           child: const Icon(
-            Icons.cancel_rounded,
+            Icons.close,
             color: Colors.black,
           ),
-          onTap: (){},
+          onTap: () => vm.close(context),
         ),
 
         const Text(
@@ -98,7 +98,10 @@ class _InternationalTransferState extends State<InternationalTransfer> {
     final  amountToPayCard = PayCard(title: 'Amount to pay', amount: amount,);
     final sendButton = LargeButton('Send', () => vm.send(context));
 
-    return Container(
+    return Scaffold(
+
+        body: SafeArea(
+        child: Container(
       margin: const EdgeInsets.symmetric(vertical: 20,horizontal: 20),
       child: SingleChildScrollView(
         child:Column(
@@ -128,7 +131,7 @@ class _InternationalTransferState extends State<InternationalTransfer> {
             headerText('Reference',),
             const SizedBox(height: 20,),
             referenceCard,
-            const SizedBox(height: 20,),
+            const SizedBox(height: 30,),
             amountToPayCard,
             const SizedBox(height: 30,),
             sendButton,
@@ -138,6 +141,7 @@ class _InternationalTransferState extends State<InternationalTransfer> {
           ],
         ),
       ),
-    );
+        ),
+    ),);
   }
 }

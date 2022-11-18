@@ -3,7 +3,8 @@ import 'package:geniopay/constant/colors.dart';
 class LargeButton extends StatelessWidget {
   final VoidCallback callback;
   final String text;
-  const LargeButton(this.text, this.callback, {Key? key}) : super(key: key);
+  final Color color;
+  const LargeButton(this.text, this.callback, {this.color = largeButtonColor, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,11 +15,11 @@ class LargeButton extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 20,),
       margin: const EdgeInsets.symmetric(horizontal: 2),
       width: size.width,
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(
           Radius.circular(8)
         ),
-        color: largeButtonColor
+        color: color
       ),
       child: Text(
         text.toUpperCase(),

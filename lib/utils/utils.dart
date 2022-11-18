@@ -16,6 +16,10 @@ class Utils {
     }
   }
 
+  static dateNow(){
+    return formatTime(DateTime.now(), format: 'dd.MM.yyyy');
+  }
+
   static rewardFormattedText(dynamic reward){
     try{
       final rewardFormat =  NumberFormat('#,###', 'en_US');
@@ -37,7 +41,7 @@ class Utils {
   }
 
     static  formatTime(DateTime date, {String format = 'yyyy.dd.MM'}){
-      //If wrong format is provided use the YYYY.dd.MM format
+      //If wrong format is provided use the yyyy.dd.MM format
       try{
         return DateFormat(format).format(date);
       }catch(ex){
