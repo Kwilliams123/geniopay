@@ -35,7 +35,7 @@ class _InternationalTransferState extends State<InternationalTransfer> {
   @override
   Widget build(BuildContext context) {
     vm = context.watch<InternationTransferProvider>();
-    final schedule = SvgPicture.asset('svg/schedule.svg');
+    final schedule = SvgPicture.asset('assets/svg/schedule.svg');
     final headerParent = Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [

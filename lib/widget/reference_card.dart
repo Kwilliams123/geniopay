@@ -9,7 +9,7 @@ class ReferenceCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final message = SvgPicture.asset('svg/message.svg');
+    final message = SvgPicture.asset('assets/svg/message.svg');
     final arrowForward = ButtonForward(() { });
     final size = MediaQuery.of(context).size;
     const text = Text(

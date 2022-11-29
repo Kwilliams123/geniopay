@@ -25,7 +25,7 @@ class CountryTin extends StatelessWidget {
   Widget build(BuildContext context) {
     final delete = Align(
       alignment: Alignment.centerRight,
-      child: SvgPicture.asset('svg/delete.svg'),
+      child: SvgPicture.asset('assets/svg/delete.svg'),
     );
 
     return Column(

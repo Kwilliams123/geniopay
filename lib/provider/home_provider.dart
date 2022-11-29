@@ -10,9 +10,9 @@ import '../model/promotions.dart';
 class HomeProvider extends BaseProvider{
 
   late User _user;
-  late bool showBalance;
+  late bool showBalance = true;
   late List<Promotions> _promotion;
-  User get userData => _user;
+  User get userData => _getUser();
   List<Promotions> get promotion => _promotions();
 
   @override
@@ -31,7 +31,7 @@ class HomeProvider extends BaseProvider{
   _getUser(){
     //todo -> get user from actual api call
     // todo -> set UI true
-    _user = User.fromJson(user);
+    return User.fromJson(user);
     // todo -> set UI false
   }
 

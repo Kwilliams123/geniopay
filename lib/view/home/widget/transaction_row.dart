@@ -60,7 +60,7 @@ class TransactionRow extends StatelessWidget {
           // only spotify and dribble are in the svg folder for now.
           (purchase.entity.toLowerCase() == 'spotify' ||
               purchase.entity.toLowerCase() == 'dribble') ?
-          SvgPicture.asset('svg/${purchase.entity.toLowerCase()}.svg') :
+          SvgPicture.asset('assets/svg/${purchase.entity.toLowerCase()}.svg') :
           RoundName(text: purchase.entity),
           const SizedBox(width: 20,),
 

@@ -2,7 +2,7 @@ class PurchaseTransaction{
   late int id;
   late String entity;
   late String transDate;
-  late double amount;
+  late num amount;
   late String status;
 
   PurchaseTransaction({required this.id,

@@ -7,7 +7,7 @@ class ButtonForward extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final button = SvgPicture.asset('svg/genio-arrow-forward.svg');
+    final button = SvgPicture.asset('assets/svg/genio-arrow-forward.svg');
     return InkWell(
       onTap: callback,
       child: button,

@@ -42,7 +42,9 @@ class ProofIdentity extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         InkWell(
-          onTap: () {},
+          onTap: () {
+            goBack();
+          },
           child: const Icon(
             Icons.arrow_back,
             color: Colors.black,
@@ -73,17 +75,19 @@ class ProofIdentity extends StatelessWidget {
         ),
       ),
     );
-    void onContinue() =>
-      Navigator.of(context).pushNamed(Routes.homeRoute);
+    void onContinue() => Navigator.of(context).pushNamed(Routes.homeRoute);
 
-    final continueButton = LargeButton('Continue', ()=> onContinue());
+    final continueButton = LargeButton('Continue', () => onContinue());
 
-    final additionalInformationText = Text(
-      'There may also be rare situations where we would require you to upload additional documents',
-      style: TextStyle(
-        color: genioContainerColor[100],
-        fontSize: 14,
-        fontWeight: FontWeight.w400,
+    final additionalInformationText = Center(
+      child: Text(
+        'There may also be rare situations where we would require you to upload additional documents',
+        style: TextStyle(
+          color: genioContainerColor[100],
+          fontSize: 14,
+          fontWeight: FontWeight.w400,
+        ),
+        textAlign: TextAlign.center,
       ),
     );
 
@@ -105,8 +109,7 @@ class ProofIdentity extends StatelessWidget {
           onLinkTap: () {})
     ];
 
-    final baseParent = Flexible(
-      child: Container(
+    final baseParent = Container(
       height: size.height,
       padding: const EdgeInsets.symmetric(
         vertical: 20,
@@ -117,60 +120,59 @@ class ProofIdentity extends StatelessWidget {
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20), topRight: Radius.circular(20))),
       child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            const SizedBox(
-              height: 30,
-            ),
-            ...verifications,
-            const SizedBox(
-              height: 50,
-            ),
-            prepareDocumentText,
-            const SizedBox(
-              height: 30,
-            ),
-            additionalInformationText,
-            const SizedBox(
-              height: 30,
-            ),
-            continueButton,
-            const Spacer(),
-          ],
-        ),
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          ...verifications,
+          const SizedBox(
+            height: 30,
+          ),
+          prepareDocumentText,
+          const SizedBox(
+            height: 30,
+          ),
+          additionalInformationText,
+          const SizedBox(
+            height: 30,
+          ),
+          continueButton,
+          const Spacer(),
+        ],
       ),
     );
 
     return Scaffold(
-        body: SafeArea(
-        child: Container(
-      padding: const EdgeInsets.only(
-        top: 20,
-      ),
-      color: genioContainerColor[50],
-      child: Column(
-        children: [
-          Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20,
-              ),
-              child: header),
-          const SizedBox(
-            height: 50,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Container(
+            padding: const EdgeInsets.only(
+              top: 20,
             ),
-            child: identityText,
+            color: genioContainerColor[50],
+            child: Column(
+              children: [
+                Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                    ),
+                    child: header),
+                const SizedBox(
+                  height: 50,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                  ),
+                  child: identityText,
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                baseParent,
+              ],
+            ),
           ),
-          const SizedBox(
-            height: 30,
-          ),
-          baseParent,
-
-        ],
-      ),),),
+        ),
+      ),
     );
   }
 }

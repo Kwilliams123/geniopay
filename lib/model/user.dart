@@ -8,7 +8,7 @@ class User {
   late String name;
   late int id;
   late String srcImage;
-  late double balance;
+  late num balance;
   late int numRewards;
   late int notificationCount;
   late List<PurchaseTransaction> purchase;

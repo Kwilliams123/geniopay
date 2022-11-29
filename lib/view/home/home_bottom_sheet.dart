@@ -2,8 +2,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:geniopay/constant/colors.dart';
-import 'package:geniopay/emulated_api_data/promotions.dart';
-import 'package:geniopay/model/promotions.dart';
 import 'package:geniopay/provider/home_provider.dart';
 import 'package:geniopay/view/home/widget/promotion_card.dart';
 import 'package:geniopay/view/home/widget/transaction_row.dart';

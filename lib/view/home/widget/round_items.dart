@@ -13,7 +13,7 @@ class RoundItems extends StatelessWidget {
   Widget build(BuildContext context) {
     final icon = InkWell(
       onTap: tapIcon,
-      child: SvgPicture.asset('svg/$svg.svg'),
+      child: SvgPicture.asset('assets/svg/$svg.svg'),
     );
     return Column(
       children: [

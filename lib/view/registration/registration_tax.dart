@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:geniopay/constant/colors.dart';
 import 'package:geniopay/extended_function/extensions.dart';
 import 'package:geniopay/provider/registration_tax_provider.dart';
+import 'package:geniopay/routes/routes.dart';
 import 'package:geniopay/utils/Utils.dart';
 import 'package:geniopay/view/registration/widget/add_country.dart';
 import 'package:geniopay/view/registration/widget/country_tin.dart';
@@ -35,11 +36,8 @@ class _RegistrationTaxState extends State<RegistrationTax> {
   Widget build(BuildContext context) {
     vm = context.watch<RegistrationTaxProvider>();
     late Widget firstTin;
-    final TextEditingController controller = TextEditingController();
-
 
     // todo -> use form global keys to track the controllers and form states
-
 
 
     void onAddCountry() {
@@ -60,11 +58,16 @@ class _RegistrationTaxState extends State<RegistrationTax> {
 
     //onAddCountry();
 
+    goBack() =>
+      Navigator.of(context).pop();
+
     final header = Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         IconButton(
-          onPressed: () {},
+          onPressed: (){
+            goBack();
+          },
           icon: const Icon(
             Icons.arrow_back_rounded,
             color: Colors.black,
@@ -228,7 +231,7 @@ class _RegistrationTaxState extends State<RegistrationTax> {
           ),
           const SizedBox(width: 30,),
           Checkbox(
-              // checkColor: genioContainerColor[100],
+              side: BorderSide(color:genioContainerColor[100]!),
               value: vm.declaration1,
               onChanged: (bool? val) {
                 setState(() {
@@ -275,7 +278,7 @@ class _RegistrationTaxState extends State<RegistrationTax> {
         ),
         const SizedBox(width: 30,),
         Checkbox(
-            //checkColor: genioContainerColor[100],
+            side: BorderSide(color:genioContainerColor[100]!),
             value: vm.declaration2,
             onChanged: (bool? val) {
               setState(() {
@@ -307,7 +310,7 @@ class _RegistrationTaxState extends State<RegistrationTax> {
         ),
         const SizedBox(width: 30,),
         Checkbox(
-            //checkColor: genioContainerColor[100],
+            side: BorderSide(color:genioContainerColor[100]!),
             value: vm.declaration3,
             onChanged: (bool? val) {
               setState(() {

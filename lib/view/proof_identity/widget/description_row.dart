@@ -43,10 +43,10 @@ class DescriptionRow extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.symmetric(
-        vertical: 10,
+        vertical: 15,
       ),
       child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-        SvgPicture.asset('svg/$svg.svg'),
+        SvgPicture.asset('assets/svg/$svg.svg'),
         const SizedBox(
           width: 20,
         ),
