@@ -11,7 +11,7 @@ class PayCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final payImage =  SvgPicture.asset('svg/pay.svg', semanticsLabel: 'Pay' );
+    final payImage =  SvgPicture.asset('assets/svg/pay.svg', semanticsLabel: 'Pay' );
 
     final textParent = Column(
       mainAxisAlignment: MainAxisAlignment.start,

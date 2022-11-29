@@ -11,9 +11,9 @@ class PaymentMethodCard extends StatelessWidget {
     final size = MediaQuery
         .of(context)
         .size;
-    final creditCard = SvgPicture.asset('svg/credit-card.svg');
+    final creditCard = SvgPicture.asset('assets/svg/credit-card.svg');
 
-    final masterCard = SvgPicture.asset('svg/master-card.svg');
+    final masterCard = SvgPicture.asset('assets/svg/master-card.svg');
     final arrowForward = ButtonForward(() {});
 
     const textParent =

@@ -50,7 +50,7 @@ class PromotionCard extends StatelessWidget {
         children: [
           textColumn,
           const SizedBox(width: 15,),
-          Image.asset('images/$srcImage.png',),
+          Image.asset('assets/images/$srcImage.png',),
         ],
       ),
     );

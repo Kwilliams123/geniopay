@@ -41,7 +41,7 @@ class DashboardCard extends StatelessWidget {
       ],
     );
 
-    final usd = SvgPicture.asset('svg/usd.svg');
+    final usd = SvgPicture.asset('assets/svg/usd.svg');
     // todo -> get real country picker package
     final fromCountryPicker = Row(
       children: [
@@ -108,7 +108,7 @@ class DashboardCard extends StatelessWidget {
       ) ,
     );
 
-    double amountReceived = transaction.receiver.amount * transaction.exchangeRate;
+    num amountReceived = transaction.receiver.amount * transaction.exchangeRate;
     final toParent = Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -136,7 +136,7 @@ class DashboardCard extends StatelessWidget {
       ],
     );
 
-    final progress = SvgPicture.asset('svg/progress.svg');
+    final progress = SvgPicture.asset('assets/svg/progress.svg');
     final progressParent = Row(
       crossAxisAlignment: CrossAxisAlignment.start,
      children: [

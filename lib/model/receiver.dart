@@ -1,8 +1,8 @@
 class Receiver {
    late int id;
    late String name;
-   late double amount;
-   late double totalAmount;
+   late num amount;
+   late num totalAmount;
    late String contact;
    late String imageSRC;
 

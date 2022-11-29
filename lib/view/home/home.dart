@@ -43,7 +43,7 @@ class _Home extends State<Home> {
 
     final iconRow = Row(
       children: [
-        SvgPicture.asset('svg/tree.svg'),
+        SvgPicture.asset('assets/svg/tree.svg'),
         const SizedBox(
           width: 10,
         ),
@@ -124,7 +124,7 @@ class _Home extends State<Home> {
         const SizedBox(
           width: 5,
         ),
-        SvgPicture.asset('svg/star.svg'),
+        SvgPicture.asset('assets/svg/star.svg'),
       ],
     );
 
@@ -146,7 +146,7 @@ class _Home extends State<Home> {
         backgroundColor: genioContainerColor[100],
         child: ClipOval(
           child: vm.userData.srcImage.isEmpty
-              ? Image.asset('images/avatar_2.png')
+              ? Image.asset('assets/images/avatar_2.png')
               : Image.network(vm.userData.srcImage),
         ),
       ),
@@ -297,7 +297,7 @@ class _Home extends State<Home> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () => vm.goTransferScreen(context),
-        child: SvgPicture.asset('svg/geniopay_logo.svg'),
+        child: SvgPicture.asset('assets/svg/geniopay_logo.svg'),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
@@ -311,13 +311,13 @@ class _Home extends State<Home> {
             children: [
               InkWell(
                 onTap: () => vm.goTransferScreen(context),
-               child: SvgPicture.asset('svg/home_navigation.svg'),),
+               child: SvgPicture.asset('assets/svg/home_navigation.svg'),),
               InkWell(
                 onTap: () => vm.goTransferScreen(context),
-                child: SvgPicture.asset('svg/transaction_navigation.svg'),),
+                child: SvgPicture.asset('assets/svg/transaction_navigation.svg'),),
               InkWell(
                 onTap: () => vm.goTransferScreen(context),
-                child: SvgPicture.asset('svg/wallet_navigation.svg'),),
+                child: SvgPicture.asset('assets/svg/wallet_navigation.svg'),),
               IconButton(onPressed: () => vm.goInsuranceScreen(context), icon: const Icon(
                 Icons.menu_sharp,
                 color: Colors.black,

@@ -19,7 +19,7 @@ class ReceiverCard extends StatelessWidget {
           backgroundColor: Colors.transparent,
         child: ClipOval(
           child: srcImage.isEmpty ?
-          Image.asset('images/avatar_1.png') :
+          Image.asset('assets/images/avatar_1.png') :
           Image.network(srcImage),
         ),
       ),

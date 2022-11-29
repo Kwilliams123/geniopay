@@ -2,8 +2,8 @@ import 'package:geniopay/model/receiver.dart';
 
 class Transaction {
   late int id;
-  late double transCharge;
-  late double exchangeRate;
+  late num transCharge;
+  late num exchangeRate;
   late String sendFrom;
   late String sendTo;
   late String fromCode;

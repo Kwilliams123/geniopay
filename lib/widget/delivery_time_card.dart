@@ -11,9 +11,9 @@ class DeliveryTimeCard extends StatelessWidget {
     final size = MediaQuery
         .of(context)
         .size;
-    final send = SvgPicture.asset('svg/send.svg');
+    final send = SvgPicture.asset('assets/svg/send.svg');
 
-    final lightening = SvgPicture.asset('svg/lightening.svg');
+    final lightening = SvgPicture.asset('assets/svg/lightening.svg');
     final arrowForward = ButtonForward(() {});
 
     const textParent =
